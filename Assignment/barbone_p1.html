@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
-      <meta name="author" content="Martin Lenart, Seido AB">
+      <meta name="author" content="Henri Lehtonen">
   
       <title>Barbone template</title>
     
@@ -43,73 +43,75 @@
 
       <main>
 
+        <!-- Page List of groups -->
+        <div class="container px-4 py-4" id="list-of-items">
+          <h2 class="pb-2 border-bottom">List of Music bands</h2>
+  
+          <p>Below are some of the worlds most famous Music bands.</p>
+          <p id="displayNrOfBands">The database now contains 2 music groups</p>
+          <div class="row mb-1 text-center">
+            <div class="col-md-8 ">
+              <!-- <form class="d-flex mt-3 mt-lg-0" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form> -->
+            </div>
+          </div>
+  
+          <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
+            <div class="col-md-7 col-lg-10">
+                <div class="row mb-2 text-center">
+                  <div class="col-md-12 themed-grid-head-col">Music groups</div>
+                </div>
+                <div class="row mb-2 text-center" id="artistList">
+                  <div class="col-md-12 themed-grid-col d-none">
+                      AC/DC
+                  </div>
+                </div>
+            </div>
+          </div>
+  
+  
+          <!-- <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5 artistList">
+            <div class="col-md-7 col-lg-10">
+                <div class="row mb-2 text-center">
+                  <div class="col-md-10 themed-grid-head-col">Group Name</div>
+                </div>
+                <div class="row mb-2 text-center">
+                  <div class="col-md-10 themed-grid-col">
+                    <a href="#view-group">
+                      AC/DC
+                    </a>
+                  </div>
+                </div>
+            </div>
+          </div> -->
+          
+          <nav aria-label="Standard pagination example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#list-of-friends" aria-label="Previous" id="prevBtn">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#list-of-friends" id="currentPage">1</a></li>
+              <!-- <li class="page-item"><a class="page-link" href="#list-of-friends">2</a></li>
+              <li class="page-item"><a class="page-link" href="#list-of-friends">3</a></li> -->
+              <li class="page-item">
+                <a class="page-link" href="#list-of-friends" aria-label="Next" id="nextBtn">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
 
 
       </main>
 
 
-      <!-- Page List of groups -->
-      <div class="container px-4 py-4" id="list-of-items">
-        <h2 class="pb-2 border-bottom">List of Music bands</h2>
-
-        <p>Below are some of the worlds most famous Music bands.</p>
-        <p>The database now contains 2 music groups</p>
-        <div class="row mb-1 text-center">
-          <div class="col-md-8 ">
-            <!-- <form class="d-flex mt-3 mt-lg-0" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form> -->
-          </div>
-        </div>
-
-        <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
-          <div class="col-md-7 col-lg-10">
-              <div class="row mb-2 text-center">
-                <div class="col-md-12 themed-grid-head-col">Quotes</div>
-              </div>
-              <div class="row mb-2 text-center" id="artistList">
-                <div class="col-md-12 themed-grid-col d-none">
-                    AC/DC
-                </div>
-              </div>
-          </div>
-        </div>
-
-
-        <!-- <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5 artistList">
-          <div class="col-md-7 col-lg-10">
-              <div class="row mb-2 text-center">
-                <div class="col-md-10 themed-grid-head-col">Group Name</div>
-              </div>
-              <div class="row mb-2 text-center">
-                <div class="col-md-10 themed-grid-col">
-                  <a href="#view-group">
-                    AC/DC
-                  </a>
-                </div>
-              </div>
-          </div>
-        </div> -->
-        
-        <nav aria-label="Standard pagination example">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#list-of-friends" aria-label="Previous" id="prevBtn">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#list-of-friends" id="currentPage">1</a></li>
-            <!-- <li class="page-item"><a class="page-link" href="#list-of-friends">2</a></li>
-            <li class="page-item"><a class="page-link" href="#list-of-friends">3</a></li> -->
-            <li class="page-item">
-              <a class="page-link" href="#list-of-friends" aria-label="Next" id="nextBtn">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      
+      
 
 
       <!-- Part of page Frame -->

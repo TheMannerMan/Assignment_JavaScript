@@ -18,8 +18,45 @@ const data = await _service.readMusicGroupAsync(id, false);
 console.log("Hello");
 
 const groupName = document.querySelector("#groupName");
-groupName.innerText = data.name;
+const groupGenre = document.querySelector("#genre");
+const groupEst = document.querySelector("#established")
+const artistList = document.querySelector("#artistList");
+const albumList = document.querySelector("#albumList");
 
+groupName.innerText = data.name;
+groupGenre.innerText = data.strGenre;
+groupEst.innerText = data.establishedYear;
+
+while(artistList.firstChild){
+    artistList.removeChild(artistList.firstChild);
+}
+
+for (const artist of data.artists) {
+    
+    const div = document.createElement("div");
+    div.classList.add("col-md-12", "themed-grid-col");
+    div.innerText = `${artist.firstName} ${artist.lastName}`;
+    artistList.appendChild(div);
+}
+
+for (const album of data.albums){
+    const div = document.createElement("div");
+    div.classList.add("row", "mb-2", "text-center");
+    
+    const divAlbumName = document.createElement("div");
+    divAlbumName.classList.add("col-md-10", "themed-grid-col");
+    divAlbumName.innerText = album.name;
+
+    const divYearRelease = document.createElement("div");
+    divYearRelease.classList.add("col-md-2", "themed-grid-col");
+    divYearRelease.innerText = album.releaseYear;
+
+    div.appendChild(divAlbumName);
+    div.appendChild(divYearRelease);
+
+    albumList.appendChild(div);
+
+}
 
 // const _list = document.getElementById('query-params');
 // for (const q of params) {

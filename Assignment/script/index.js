@@ -17,6 +17,7 @@ import musicService from'./music-group-service.js';
     let nrOfPages;
     const listOfArtist = document.querySelector("#artistList");
     const currentPageLbl = document.querySelector("#currentPage");
+    const pNrOfBands = document.querySelector("#displayNrOfBands");
 
     //Paginator buttons
     const prevBtn = document.querySelector("#prevBtn");
@@ -39,15 +40,17 @@ import musicService from'./music-group-service.js';
         }
     }
 
-
+    //Get the nr of bands and display on the website.
+    let data = await _service.readMusicGroupsAsync(currentPage);
+    pNrOfBands.innerText = `The database now contains ${data.dbItemsCount} music groups`
 
 
 
     renderAccounts();
 
     async function  renderAccounts(){
-        const data = await _service.readMusicGroupsAsync(currentPage);
-
+        data = await _service.readMusicGroupsAsync(currentPage);
+        
         nrOfPages = Math.ceil(data.dbItemsCount/data.pageSize);
         console.log(nrOfPages);
 
