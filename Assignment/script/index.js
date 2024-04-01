@@ -20,6 +20,7 @@ import musicService from'./music-group-service.js';
     const currentPageLbl = document.querySelector("#currentPage");
     const pNrOfBands = document.querySelector("#displayNrOfBands");
     const searchForm = document.querySelector("#searchForm");
+    const searchHits = document.querySelector("#searchHits");
 
     //Paginator buttons
     const prevBtn = document.querySelector("#prevBtn");
@@ -85,6 +86,25 @@ import musicService from'./music-group-service.js';
         }
         
         renderCurrentPage();
+
+        if (searchInput != null && searchInput.trim() != ""){
+            searchHits.style.display = "block";
+            searchHits.innerText = `Found ${data.dbItemsCount} music groups including the word ${searchInput}`;
+
+            // searchHits.computedStyleMap.
+            // mainDiv.removeChild(mainDiv.childNodes[8]);
+            // const para = document.createElement("p");
+            // para.innerText = `Found ${data.dbItemsCount} music groups including the word ${searchInput}`;
+            
+            // let referenceItem = mainDiv.children[4];
+            // mainDiv.insertBefore(para, referenceItem);
+
+        }
+
+        else if (searchInput != null && searchInput.trim() == ""){
+            searchHits.style.display = "none";
+        }
+
     }
 
     async function renderCurrentPage(){
@@ -93,29 +113,3 @@ import musicService from'./music-group-service.js';
 
 
 })();
-
-
-
-// async function  renderAccounts(){
-//     //data = await _service.readMusicGroupsAsync(currentPage);
-    
-//     nrOfPages = Math.ceil(data.dbItemsCount/data.pageSize);
-//     console.log(nrOfPages);
-
-//     while(listOfArtist.firstChild){
-//         listOfArtist.removeChild(listOfArtist.firstChild);
-//     }
-
-//     for (const artist of data.pageItems){
-//         const div = document.createElement("div");
-//         div.classList.add('col-md-12', 'themed-grid-col');
-//         div.dataset.id = artist.musicGroupId;
-//         const a = document.createElement("a");
-//         a.innerText = artist.name;
-//         a.href = `./barbone_artist_info.html?id=${artist.musicGroupId}`;
-//         div.appendChild(a);
-//         listOfArtist.appendChild(div);
-//     }
-    
-//     renderCurrentPage();
-// }
