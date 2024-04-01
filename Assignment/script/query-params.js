@@ -5,65 +5,59 @@ const _service = new musicService(`https://appmusicwebapinet8.azurewebsites.net/
 
 (async () => {
 
+    // Parsing URL parameters to retrieve the "id"
     let url = new URL(window.location);
     let params = url.searchParams;
     let id = params.get("id"); 
+
+    //Fetch data from API 
+    const data = await _service.readMusicGroupAsync(id, false);
+
     
-    console.log(id);
-    console.log(params.has("id")); 
-    console.log(params.has("fakeid")); 
+    // Selecting DOM elements
+    const groupName = document.querySelector("#groupName");
+    const groupGenre = document.querySelector("#genre");
+    const groupEst = document.querySelector("#established")
+    const artistList = document.querySelector("#artistList");
+    const albumList = document.querySelector("#albumList");
 
-const data = await _service.readMusicGroupAsync(id, false);
+    //Display information from the fetched data
+    groupName.innerText = data.name;
+    groupGenre.innerText = data.strGenre;
+    groupEst.innerText = data.establishedYear;
 
-console.log("Hello");
+    // Remove elements from list before adding new ones.
+    while(artistList.firstChild){
+        artistList.removeChild(artistList.firstChild);
+    }
 
-const groupName = document.querySelector("#groupName");
-const groupGenre = document.querySelector("#genre");
-const groupEst = document.querySelector("#established")
-const artistList = document.querySelector("#artistList");
-const albumList = document.querySelector("#albumList");
+    // Add elements to the list displaying artist
+    for (const artist of data.artists) {
+        
+        const div = document.createElement("div");
+        div.classList.add("col-md-12", "themed-grid-col");
+        div.innerText = `${artist.firstName} ${artist.lastName}`;
+        artistList.appendChild(div);
+    }
 
-groupName.innerText = data.name;
-groupGenre.innerText = data.strGenre;
-groupEst.innerText = data.establishedYear;
+    // Add elements to the list displaying albums
+    for (const album of data.albums){
+        const div = document.createElement("div");
+        div.classList.add("row", "mb-2", "text-center");
+        
+        const divAlbumName = document.createElement("div");
+        divAlbumName.classList.add("col-md-10", "themed-grid-col");
+        divAlbumName.innerText = album.name;
 
-while(artistList.firstChild){
-    artistList.removeChild(artistList.firstChild);
-}
+        const divYearRelease = document.createElement("div");
+        divYearRelease.classList.add("col-md-2", "themed-grid-col");
+        divYearRelease.innerText = album.releaseYear;
 
-for (const artist of data.artists) {
-    
-    const div = document.createElement("div");
-    div.classList.add("col-md-12", "themed-grid-col");
-    div.innerText = `${artist.firstName} ${artist.lastName}`;
-    artistList.appendChild(div);
-}
+        div.appendChild(divAlbumName);
+        div.appendChild(divYearRelease);
 
-for (const album of data.albums){
-    const div = document.createElement("div");
-    div.classList.add("row", "mb-2", "text-center");
-    
-    const divAlbumName = document.createElement("div");
-    divAlbumName.classList.add("col-md-10", "themed-grid-col");
-    divAlbumName.innerText = album.name;
+        albumList.appendChild(div);
 
-    const divYearRelease = document.createElement("div");
-    divYearRelease.classList.add("col-md-2", "themed-grid-col");
-    divYearRelease.innerText = album.releaseYear;
-
-    div.appendChild(divAlbumName);
-    div.appendChild(divYearRelease);
-
-    albumList.appendChild(div);
-
-}
-
-// const _list = document.getElementById('query-params');
-// for (const q of params) {
-//     const li = document.createElement('li');
-//     li.innerText = `param: ${q[0]} - value: ${q[1]}`;
-
-//     _list.appendChild(li);
-// }
+    }
 
 })();
